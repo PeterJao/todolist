@@ -1,38 +1,127 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap');
+
+
+body {
+  background-color: #CDFADB;
+  
+}
+
+header {
+  background-color: #F6FDC3;
+  padding: 1rem;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1 {
+  font-size: 2rem;
+  margin: 0;
+  color: #FF8080;
+  font-family: "Gloria Hallelujah", cursive;
+
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+h2 {
+  color: #FFCF96;
+  font-family: "Gloria Hallelujah", cursive;
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+}
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-top: 2rem;
 }
 
-.App-link {
-  color: #61dafb;
+form {
+  display: flex;
+  margin-bottom: 1rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+input[type="text"] {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 0.5rem;
+  font-size: 1rem;
+  width: 300px;
+}
+
+button[type="submit"] {
+    border: none;
+    outline: none;
+    background-color: #6c5ce7;
+    padding: 10px 20px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    border-radius: 5px;
+    transition: all ease 0.1s;
+    box-shadow: 0px 5px 0px 0px #a29bfe;
   }
-  to {
-    transform: rotate(360deg);
-  }
+  
+button:active {
+transform: translateY(5px);
+box-shadow: 0px 0px 0px 0px #a29bfe;
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 300px;
+  margin-top: 50px;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f9f9f9;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+.task-item:last-child {
+  margin-bottom: 0;
+}
+
+.task-description {
+  flex: 1;
+  margin-right: 1rem;
+}
+
+button {
+  /* delete button */
+  background-color: #f01515; 
+  border: none;
+  border-radius: 4px;
+  color: rgb(0, 0, 0);
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+  margin-left: 1rem;
+}
+
+button:hover {
+  background-color: #e90e0e;
+}
+
+.edit-button {
+  background-color: #90d189;
+}
+
+.edit-button:hover {
+  background-color: #0d47a1;
+}
+
+.task-item.completed {
+  text-decoration: line-through;
+  filter: grayscale(100%);
+}
+
+.info-text {
+  /* Your CSS styles here */
+  font-size: 16px;
+  color: #333;
+  font-family: "Gloria Hallelujah", cursive;
 }

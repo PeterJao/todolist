@@ -1,23 +1,55 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Header from "./Header";
+import Title from "./Title";
+import AddTask from "./AddTask";
+import DropdownMenu from "./DropdownMenu";
+import TaskList from "./TaskList";
+import Footer from "./Footer";
+import "./App.css";
 
 function App() {
+  const [tasks, setTasks] = useState([]);
+  const [filterOption, setFilterOption] = useState("all");
+
+  const handleAddTask = (newTask) => {
+    const newTaskList = [
+      ...tasks,
+      { id: Date.now(), description: newTask, completed: false },
+    ];
+    setTasks(newTaskList);
+  };
+
+  const handleEditTask = (id, updatedTask, isCompleted) => {
+    const updatedTasks = tasks.map((task) =>
+      task.id === id
+        ? { ...task, description: updatedTask, completed: isCompleted }
+        : task
+    );
+    setTasks(updatedTasks);
+  };
+
+  const handleDeleteTask = (id) => {
+    const updatedTasks = tasks.filter((task) => task.id !== id);
+    setTasks(updatedTasks);
+  };
+
+  const handleFilterChange = (selectedOption) => {
+    setFilterOption(selectedOption);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <Header />
+      <Title />
+      <AddTask addTask={handleAddTask} />
+      <DropdownMenu onFilterChange={handleFilterChange} />
+      <TaskList
+        tasks={tasks}
+        onEdit={handleEditTask}
+        onDelete={handleDeleteTask}
+        filterOption={filterOption}
+      />
+      <Footer items={tasks} />
     </div>
   );
 }
